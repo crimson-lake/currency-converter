@@ -24,7 +24,7 @@
 				<br/><br/>
 				<input type="submit" class="btn btn-light mt-5 btn-lg" value="submit">
 			</form>
-			<div id = "result"><p>${text_numb}<p></div>
+			${text_numb}
 		</div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

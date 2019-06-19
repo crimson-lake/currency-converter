@@ -1,4 +1,4 @@
-package converter.servlet;
+package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,15 +43,9 @@ public class Converter extends HttpServlet {
 			default:
 				text = "Select a language";
 		}
-		PrintWriter out = response.getWriter();		
-		out.println("<!DOCTYPE html>");
-		out.println("<html><body>");
-		out.println(text);
-		out.println("</html></body>");
-		/*
 		request.setAttribute("text_numb", text);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
-		dispatcher.forward(request, response);*/
+		dispatcher.forward(request, response);
 
 
 	}
