@@ -11,24 +11,30 @@
 	</head>
 	<body>
 		<div id="heading" class="text-center text-white container-fluid">
-			<div class="row align-items-center">
-				<div class="col-lg-6 mx-2">
+			<div class="row align-items-center py-5 bg-blue">
+				<div class="col-lg-1"></div>
+				<div class="col-lg-5 mx-2">
 					<form action="Converter" method="GET">
-						<h3>Number you want to convert to text: </h3>
-						<input type="text" class="form-control" placeholder="enter a number" name="number"/>
+						
+						<h3>Convert this number: </h3>
+						<input type="number" class="form-control" placeholder="enter a number" name="number"/>
 						<br/><br/>
-						<h3>Select a language:</h3>
+
+						<h3>Language:</h3>
 						<select name="language" class="form-control">
 							<option>Polish</option>
 							<option>English</option>
 						</select>
 						<br/><br/>
-						<input type="submit" class="btn btn-light mt-5 btn-lg" value="submit">
+						
+						<input type="submit" class="btn btn-light mt-3 btn-lg" value="submit">
 					</form>
 				</div>
-				<div class="col-lg-6">
-					<p class="py-3">${text_numb}</p>
+				<div class="col-lg-5">
+					<h3>${numb}</h3>
+					<p class="py-5">${text_numb}</p>
 				</div>
+				<div class="col-lg-1"></div>
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

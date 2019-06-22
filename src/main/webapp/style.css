@@ -20,10 +20,10 @@ body, html {
 	font-size: 4rem;
 }
 
-#result {
-	padding: 5%;
+p {
+	font-size: 1.5rem;
 }
 
-#result p {
-	font-size: 3rem;
+.bg-blue {
+	background-color: #115c6d;
 }
