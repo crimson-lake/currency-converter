@@ -27,15 +27,17 @@ public class Converter extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setCharacterEncoding("utf-8");
-    	long number = Long.parseLong(request.getParameter("number"));
+    	long number = 0;
+    	try {
+    		number = Long.parseLong(request.getParameter("number"));
+    	} catch (Exception e) {
+    		
+    	}
 		String language = request.getParameter("language");
 		String text = "";
 		switch (language) {
-			case "British":
+			case "English":
 				text = NumbersUtil.textValue(Languages.GB, number);
-				break;
-			case "American":
-				text = NumbersUtil.textValue(Languages.US, number);
 				break;
 			case "Polish":
 				text = NumbersUtil.textValue(Languages.PL, number);
@@ -45,9 +47,12 @@ public class Converter extends HttpServlet {
 		}
 		request.setAttribute("text_numb", text);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
-		dispatcher.forward(request, response);
-
-
+		try {
+			dispatcher.forward(request, response);
+		} catch (Exception e) {
+			
+		}
 	}
-
 }
+
+
