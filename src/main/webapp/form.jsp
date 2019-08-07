@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,14 +16,23 @@
 				<div class="col-lg-5 mx-2">
 					<form action="Converter" method="GET">
 						
-						<h3>Convert this number: </h3>
-						<input type="number" class="form-control" placeholder="enter a number" name="number"/>
+						<h3>Convert: </h3>
+						<input type="number" step="any" class="form-control" placeholder="enter a number" name="number"/>
 						<br/><br/>
 
-						<h3>Language:</h3>
-						<select name="language" class="form-control">
-							<option>Polish</option>
-							<option>English</option>
+						<h3>From:</h3>
+						<select name="from" class="form-control">
+							<option>PLN</option>
+							<option>USD</option>
+							<option>GBP</option>
+						</select>
+						<br/><br/>
+
+						<h3>To:</h3>
+						<select name="to" class="form-control">
+							<option>PLN</option>
+							<option>USD</option>
+							<option>GBP</option>
 						</select>
 						<br/><br/>
 						
@@ -31,8 +40,8 @@
 					</form>
 				</div>
 				<div class="col-lg-5">
-					<h3>${numb}</h3>
-					<p class="py-5">${text_numb}</p>
+					<h3>${numb} ${currency}</h3>
+					<p class="py-2">${text_numb}</p>
 				</div>
 				<div class="col-lg-1"></div>
 			</div>

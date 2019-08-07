@@ -1,7 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,23 +27,23 @@ public class Converter extends HttpServlet {
 
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	response.setCharacterEncoding("utf-8");
-    	long number = 0;
-    	String text = "";
-    	String language = request.getParameter("language");
-    	String numb_str = request.getParameter("number");
+    	response.setCharacterEncoding("UTF-8");
+    	
+    	BigDecimal number = BigDecimal.ZERO;
+    	String text = null;
+    	String from = request.getParameter("from");
+    	
     	try {
-    		number = Long.parseLong(numb_str);
-    		if (number < 0) {
-    			number = -1*number;
-    			text = "minus ";
-    		}
-    		switch (language) {
-				case "English":
-					text += NumbersUtil.textValue(Languages.GB, number);
+    		number = new BigDecimal(request.getParameter("number")).setScale(2, RoundingMode.HALF_UP);
+    		switch (from) {
+				case "USD":
+					text = NumbersUtil.textValue(Languages.US, number);
 					break;
-				case "Polish":
-					text += NumbersUtil.textValue(Languages.PL, number);
+				case "PLN":
+					text = NumbersUtil.textValue(Languages.PL, number);
+					break;
+				case "GBP":
+					text = NumbersUtil.textValue(Languages.GB, number);
 					break;
 				default:
 					text = "Select a language";
@@ -52,7 +53,9 @@ public class Converter extends HttpServlet {
     	}
 
 		request.setAttribute("text_numb", text);
-		request.setAttribute("numb", numb_str);
+		request.setAttribute("numb", number.toString());
+		request.setAttribute("currency", from);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
 		try {
 			dispatcher.forward(request, response);
