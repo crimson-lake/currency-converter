@@ -1,8 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.zielinska.numbers.languages.Languages;
-import pl.zielinska.numbers.util.NumbersUtil;
+import util.Translator;
+
 
 
 @WebServlet("/Converter")
@@ -22,45 +21,28 @@ public class Converter extends HttpServlet {
 
     public Converter() {
         super();
-
     }
 
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setCharacterEncoding("UTF-8");
     	
-    	BigDecimal number = BigDecimal.ZERO;
-    	String text = null;
-    	String from = request.getParameter("from");
+    	final String from_numb = request.getParameter("number");
+    	final String from_currency = request.getParameter("from");
     	
-    	try {
-    		number = new BigDecimal(request.getParameter("number")).setScale(2, RoundingMode.HALF_UP);
-    		switch (from) {
-				case "USD":
-					text = NumbersUtil.textValue(Languages.US, number);
-					break;
-				case "PLN":
-					text = NumbersUtil.textValue(Languages.PL, number);
-					break;
-				case "GBP":
-					text = NumbersUtil.textValue(Languages.GB, number);
-					break;
-				default:
-					text = "Select a language";
-			}
-    	} catch (Exception e) {
-    		text = "Error, try again :C";
-    	}
-
-		request.setAttribute("text_numb", text);
-		request.setAttribute("numb", number.toString());
-		request.setAttribute("currency", from);
+    	Translator from = new Translator(from_numb);
+    	
+    	
+		request.setAttribute("text_numb", from.toText(from_currency));
+		request.setAttribute("numb", from.getNumber().toString());
+		request.setAttribute("from", from_currency);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
 		try {
 			dispatcher.forward(request, response);
 		} catch (Exception e) {}
 	}
+    
     
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

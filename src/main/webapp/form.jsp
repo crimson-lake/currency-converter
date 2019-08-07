@@ -40,7 +40,7 @@
 					</form>
 				</div>
 				<div class="col-lg-5">
-					<h3>${numb} ${currency}</h3>
+					<h3>${numb} ${from}</h3>
 					<p class="py-2">${text_numb}</p>
 				</div>
 				<div class="col-lg-1"></div>
