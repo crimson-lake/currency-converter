@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import rest.NBPClient;
 import util.Translator;
 
 
@@ -29,13 +30,17 @@ public class Converter extends HttpServlet {
     	
     	final String from_numb = request.getParameter("number");
     	final String from_currency = request.getParameter("from");
+    	final String to = request.getParameter("to");
     	
     	Translator from = new Translator(from_numb);
+    	
+    	NBPClient nbp = new NBPClient();
     	
     	
 		request.setAttribute("text_numb", from.toText(from_currency));
 		request.setAttribute("numb", from.getNumber().toString());
 		request.setAttribute("from", from_currency);
+		request.setAttribute("rate", nbp.getExchangeRate(to).toString());
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
 		try {
