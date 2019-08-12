@@ -40,8 +40,17 @@
 					</form>
 				</div>
 				<div class="col-lg-5">
-					<h3>${numb} ${from}</h3>
-					<p class="py-2">${text_numb}</p>
+					<div>
+						<h3>${numb_before} ${from_currency}</h3>
+						<p class="py-2">${numb_text_before}</p>
+					</div>
+					<div>
+						<h2 class="py-4">CONVERSION RATE: ${rate}</h2>
+					</div>
+					<div>
+						<h3>${numb_after} ${to_currency}</h3>
+						<p class="py-2">${numb_text_after}</p>
+					</div>
 				</div>
 				<div class="col-lg-1"></div>
 			</div>

@@ -1,7 +1,7 @@
 package rest;
 
 import java.math.BigDecimal;
-
+import java.net.URISyntaxException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
@@ -14,11 +14,10 @@ import model.json.RatesTable;
 
 public class NBPClient {
 	private final Client restClient = ClientBuilder.newClient();
-	//private final WebTarget root = restClient.target("https://api.exchangeratesapi.io/latest?base=USD&symbols=PLN,GBP,USD");
 	
-	public BigDecimal getExchangeRate(String code) {
-		final WebTarget rate = restClient.target("https://api.exchangeratesapi.io/latest?base=USD&symbols=PLN,GBP,USD");
-		
+	public BigDecimal getExchangeRate(String base, String code) {
+		String address = "https://api.exchangeratesapi.io/latest?base=" + base + "&symbols=" + code;
+		final WebTarget rate = restClient.target(address);
 		Invocation getRate = rate
 				.request()
 				.header("Content-type", "application/json; charset=utf-8")
@@ -29,10 +28,7 @@ public class NBPClient {
 		GenericType<RatesTable> type = new GenericType<RatesTable>() {};
 		RatesTable exchangeRate = responseRate.readEntity(type);
 		
-		System.out.println(exchangeRate.getRates(code));
-		
-		
-		return BigDecimal.ZERO;
+		return exchangeRate.getRates(code);
 	}
 
 }

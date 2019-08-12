@@ -13,6 +13,10 @@ public class Translator {
 		number = new BigDecimal(numb).setScale(2, RoundingMode.HALF_UP);
 	}
 	
+	public Translator(BigDecimal numb) {
+		this.number = numb;
+	}
+	
 	public BigDecimal getNumber() {
 		return number;
 	}
