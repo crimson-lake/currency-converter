@@ -35,12 +35,12 @@ public class Converter extends HttpServlet {
     	Translator from = new Translator(from_numb);
     	
     	NBPClient nbp = new NBPClient();
-    	
+    	String rate = nbp.getExchangeRate(to).toString();
     	
 		request.setAttribute("text_numb", from.toText(from_currency));
 		request.setAttribute("numb", from.getNumber().toString());
 		request.setAttribute("from", from_currency);
-		request.setAttribute("rate", nbp.getExchangeRate(to).toString());
+		request.setAttribute("rate", rate);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
 		try {

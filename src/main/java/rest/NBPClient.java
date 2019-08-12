@@ -9,26 +9,30 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
-import model.json.Rate;
+
+import model.json.RatesTable;
 
 public class NBPClient {
 	private final Client restClient = ClientBuilder.newClient();
-	private final WebTarget root = restClient.target("http://api.nbp.pl/api/exchangerates/rates/A");
+	//private final WebTarget root = restClient.target("https://api.exchangeratesapi.io/latest?base=USD&symbols=PLN,GBP,USD");
 	
 	public BigDecimal getExchangeRate(String code) {
-		final WebTarget rate = root.path("/" + code);
+		final WebTarget rate = restClient.target("https://api.exchangeratesapi.io/latest?base=USD&symbols=PLN,GBP,USD");
 		
 		Invocation getRate = rate
 				.request()
-				.header("Accept", "application/json")
+				.header("Content-type", "application/json; charset=utf-8")
 				.buildGet();
 		
 		Response responseRate = getRate.invoke();
-		GenericType<Rate> type = new GenericType<Rate>() {};
 		
-		Rate exchangeRate = responseRate.readEntity(type);
+		GenericType<RatesTable> type = new GenericType<RatesTable>() {};
+		RatesTable exchangeRate = responseRate.readEntity(type);
 		
-		return exchangeRate.getMid();
+		System.out.println(exchangeRate.getRates(code));
+		
+		
+		return BigDecimal.ZERO;
 	}
 
 }
