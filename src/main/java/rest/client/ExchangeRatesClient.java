@@ -1,18 +1,19 @@
-package rest;
+package rest.client;
 
 import java.math.BigDecimal;
-import java.net.URISyntaxException;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
+
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 
 import model.json.RatesTable;
 
-public class NBPClient {
+public class ExchangeRatesClient {
 	private final Client restClient = ClientBuilder.newClient();
 	
 	public BigDecimal getExchangeRate(String base, String code) {

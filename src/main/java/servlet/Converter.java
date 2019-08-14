@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import rest.NBPClient;
+import rest.client.ExchangeRatesClient;
 import util.Calculator;
 import util.Translator;
 
@@ -35,8 +35,8 @@ public class Converter extends HttpServlet {
     	
     	Translator from = new Translator(from_numb);
     	
-    	NBPClient nbp = new NBPClient();
-    	BigDecimal rate = nbp.getExchangeRate(from_currency, to_currency);
+    	ExchangeRatesClient api = new ExchangeRatesClient();
+    	BigDecimal rate = api.getExchangeRate(from_currency, to_currency);
     	
     	Translator to = new Translator(Calculator.convertCurrency(from.getNumber(), rate));
     	
