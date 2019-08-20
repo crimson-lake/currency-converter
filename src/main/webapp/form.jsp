@@ -11,6 +11,11 @@
 	</head>
 	<body>
 		<div id="heading" class="text-center text-white container-fluid">
+			<div class="row align-items-center py-2 bg-blue">
+				<div class='col-lg-12 py-2'>
+						<h2 class="py-4">CONVERSION RATE: ${rate}</h2>
+				</div>
+			</div>
 			<div class="row align-items-center py-5 bg-blue">
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5 mx-2">
@@ -40,14 +45,12 @@
 					</form>
 				</div>
 				<div class="col-lg-5">
-					<div>
+					<div class="py-4">
 						<h3>${numb_before} ${from_currency}</h3>
 						<p class="py-2">${numb_text_before}</p>
 					</div>
-					<div>
-						<h2 class="py-4">CONVERSION RATE: ${rate}</h2>
-					</div>
-					<div>
+					
+					<div class="py-4">
 						<h3>${numb_after} ${to_currency}</h3>
 						<p class="py-2">${numb_text_after}</p>
 					</div>

@@ -30,10 +30,10 @@ public class Converter extends HttpServlet {
     	response.setCharacterEncoding("UTF-8");
     	
     	final String from_numb = request.getParameter("number");
+    	Translator from = new Translator(from_numb);
+    	
     	final String from_currency = request.getParameter("from");
     	final String to_currency = request.getParameter("to");
-    	
-    	Translator from = new Translator(from_numb);
     	
     	ExchangeRatesClient api = new ExchangeRatesClient();
     	BigDecimal rate = api.getExchangeRate(from_currency, to_currency);

@@ -1,19 +1,13 @@
 @charset "UTF-8";
 
 body {
-	background-image: url("dollars.jpg");
-	background-size: cover;
-	background-position: center; 
+	background-color: #115c6d;
 }
 
 body, html {
     height: 100%;
     width: 100%;
     font-family: 'Quicksand', sans-serif;
-}
-
-#heading {
-	padding-top: 10%;
 }
 
 #heading h1 {
