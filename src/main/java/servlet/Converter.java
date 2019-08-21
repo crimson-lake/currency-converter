@@ -49,7 +49,7 @@ public class Converter extends HttpServlet {
 		request.setAttribute("numb_after", to.getNumber());
 		request.setAttribute("to_currency", to_currency);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		try {
 			dispatcher.forward(request, response);
 		} catch (Exception e) {}
