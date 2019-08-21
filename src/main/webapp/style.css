@@ -10,14 +10,17 @@ body, html {
     font-family: 'Quicksand', sans-serif;
 }
 
-#heading h1 {
-	font-size: 4rem;
+label {
+	font-size: 1.3rem;
 }
 
 p {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 }
 
-.bg-blue {
-	background-color: #115c6d;
+h4 {
+	font-size: 1.3rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
