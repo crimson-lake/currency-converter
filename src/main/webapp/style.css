@@ -24,3 +24,7 @@ h4 {
     overflow-wrap: break-word;
     width: 100%;
 }
+
+#header {
+	font-family: 'Quicksand', sans-serif;
+}
