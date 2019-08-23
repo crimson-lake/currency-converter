@@ -7,7 +7,7 @@
 <fmt:setBundle basename="labels"/>
 
 <!DOCTYPE html>
-<html>
+<html lang="${cookie['lang'].value}">
 	<head>
 		<meta charset="UTF-8">
 		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> 

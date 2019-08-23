@@ -19,8 +19,8 @@
 			          Language
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="?number=0&from=USD&to=USD&theLocale=en_US">English</a>
-			          <a class="dropdown-item" href="?number=0&from=PLN&to=PLN&theLocale=pl_PL">Polish</a>
+			          <a class="dropdown-item" href="index.jsp?theLocale=en_US">English</a>
+			          <a class="dropdown-item" href="index.jsp?theLocale=pl_PL">Polish</a>
 			        </div>
 			      </li>
 		  	
