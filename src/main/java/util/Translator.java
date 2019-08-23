@@ -14,7 +14,7 @@ public class Translator {
 		try {
 			temp = new BigDecimal(numb).setScale(2, RoundingMode.HALF_UP);
 		} catch (NumberFormatException e) {
-			temp = BigDecimal.ZERO;
+			temp = BigDecimal.ZERO.setScale(2);
 		}
 		number = temp;
 	}
