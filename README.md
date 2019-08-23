@@ -1,7 +1,14 @@
-# numb2text-app
-Web app that converts numbers to text using library: https://github.com/crimson-lake/NumbersToText 
+# currency-converter
+App enables currency conversion based on current exchange rates. Returns both text and number form of converted amount. 
+Text forms are created using https://github.com/crimson-lake/currency-to-text
 
 App created using MVC design pattern (JSP -> view, servlet -> controller, logic in java classess). 
-Project built with maven. Repo NumbersToText added as maven dependency.
+Tech stack:
++ Java 8
++ Servlets
++ JSP, jstl
++ REST API -> current exchange rates obtained from https://exchangeratesapi.io/
++ bootstrap
++ Maven
 
-Deployed on heroku: https://numb2text.herokuapp.com/form.jsp
+Deployed on heroku: https://convert-currency-text.herokuapp.com/index.jsp
